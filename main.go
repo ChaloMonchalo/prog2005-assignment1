@@ -22,7 +22,11 @@ func main() {
 	handler.SetStartTime(time.Now())
 
 	router := http.NewServeMux()
-
+	
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("CountryInfo API v1 - Use /countryinfo/v1/... endpoints"))
+})
 	// Status
 	router.HandleFunc("/countryinfo/v1/status/", handler.StatusHandler)
 
